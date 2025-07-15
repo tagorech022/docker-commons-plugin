@@ -8,7 +8,7 @@
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>plugin</artifactId>
         <version>5.17</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <groupId>org.jenkinsci.plugins</groupId>
@@ -17,53 +17,36 @@
     <packaging>hpi</packaging>
 
     <name>Docker Commons Sample Plugin</name>
-    <url>https://github.com/jenkinsci/docker-commons-plugin</url>
 
     <properties>
         <jenkins.version>2.426.1</jenkins.version>
         <java.level>11</java.level>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jenkins-releases</id>
+            <url>https://repo.jenkins-ci.org/releases/</url>
+        </repository>
+        <repository>
+            <id>jenkins-public</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
-        <!-- Jenkins core -->
-        <dependency>
-            <groupId>org.jenkins-ci.main</groupId>
-            <artifactId>jenkins-core</artifactId>
-            <version>${jenkins.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Stapler (used by @DataBoundConstructor) -->
-        <dependency>
-            <groupId>org.kohsuke.stapler</groupId>
-            <artifactId>stapler</artifactId>
-            <version>1.262</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Docker Commons Plugin (for DockerServerEndpoint, DockerRegistryEndpoint, KeyMaterial) -->
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>docker-commons</artifactId>
             <version>1.22</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>io.jenkins.tools</groupId>
-                <artifactId>plugin-compat-tester</artifactId>
-                <version>1.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+        <dependency>
+            <groupId>org.kohsuke.stapler</groupId>
+            <artifactId>stapler</artifactId>
+            <version>1.262</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
