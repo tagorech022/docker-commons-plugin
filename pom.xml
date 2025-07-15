@@ -2,13 +2,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>plugin</artifactId>
         <version>5.17</version>
-        <relativePath />
+        <relativePath/>
     </parent>
 
     <groupId>org.jenkinsci.plugins</groupId>
@@ -17,17 +18,16 @@
     <packaging>hpi</packaging>
 
     <name>Docker Commons Sample Plugin</name>
+    <url>https://github.com/your-org/docker-commons-sample</url>
+    <description>A simple Jenkins plugin using docker-commons APIs</description>
 
     <properties>
         <jenkins.version>2.426.1</jenkins.version>
         <java.level>11</java.level>
+        <plugin.firstClassLoader>true</plugin.firstClassLoader>
     </properties>
 
     <repositories>
-        <repository>
-            <id>jenkins-releases</id>
-            <url>https://repo.jenkins-ci.org/releases/</url>
-        </repository>
         <repository>
             <id>jenkins-public</id>
             <url>https://repo.jenkins-ci.org/public/</url>
@@ -35,6 +35,7 @@
     </repositories>
 
     <dependencies>
+        <!-- Provided by Jenkins core or another plugin -->
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>docker-commons</artifactId>
@@ -45,8 +46,24 @@
         <dependency>
             <groupId>org.kohsuke.stapler</groupId>
             <artifactId>stapler</artifactId>
-            <version>1.262</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jenkins-ci.main</groupId>
+            <artifactId>jenkins-core</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jenkins-ci.tools</groupId>
+                <artifactId>maven-hpi-plugin</artifactId>
+                <extensions>true</extensions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
