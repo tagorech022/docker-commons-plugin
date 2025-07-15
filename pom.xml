@@ -1,102 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>org.jenkins-ci.plugins</groupId>
-    <artifactId>docker-commons</artifactId>
-    <version>1.22-SNAPSHOT</version>
-    <packaging>hpi</packaging>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>plugin</artifactId>
-        <version>4.64</version>
-        <relativePath />
-    </parent>
+  <groupId>org.jenkins-ci.plugins</groupId>
+  <artifactId>docker-commons</artifactId>
+  <version>1.22</version>
+  <packaging>hpi</packaging>
 
-    <name>Jenkins Docker Commons Plugin</name>
-    <description>Shared libraries for Jenkins Docker-related plugins</description>
-    <url>https://github.com/jenkinsci/docker-commons-plugin</url>
+  <name>Jenkins Docker Commons Plugin</name>
+  <description>Common libraries for Docker-based Jenkins plugins</description>
+  <url>https://github.com/jenkinsci/docker-commons-plugin</url>
 
-    <licenses>
-        <license>
-            <name>MIT License</name>
-            <url>https://opensource.org/licenses/MIT</url>
-        </license>
-    </licenses>
+  <properties>
+    <jenkins.version>2.414.3</jenkins.version> <!-- Compatible LTS -->
+    <java.level>17</java.level>
+    <plugin.parent.version>5.17</plugin.parent.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
-    <scm>
-        <connection>scm:git:git://github.com/jenkinsci/docker-commons-plugin.git</connection>
-        <developerConnection>scm:git:ssh://github.com:jenkinsci/docker-commons-plugin.git</developerConnection>
-        <url>https://github.com/jenkinsci/docker-commons-plugin</url>
-    </scm>
+  <parent>
+    <groupId>io.jenkins.plugin</groupId>
+    <artifactId>plugin</artifactId>
+    <version>${plugin.parent.version}</version>
+  </parent>
 
-    <properties>
-        <java.level>8</java.level>
-        <jenkins.version>2.361.4</jenkins.version>
-    </properties>
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
 
-    <repositories>
-        <repository>
-            <id>jenkins-releases</id>
-            <url>https://repo.jenkins-ci.org/releases/</url>
-        </repository>
-        <repository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </repository>
-    </repositories>
+  <dependencies>
+    <!-- Core Jenkins APIs -->
+    <dependency>
+      <groupId>org.jenkins-ci.main</groupId>
+      <artifactId>jenkins-core</artifactId>
+      <version>${jenkins.version}</version>
+      <scope>provided</scope>
+    </dependency>
 
-    <dependencies>
-        <!-- Jenkins plugin dependencies -->
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>credentials</artifactId>
-            <version>1251.vb_870f4f5d61c</version>
-        </dependency>
+    <!-- Credentials Plugin -->
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>credentials</artifactId>
+      <version>2.3.19</version> <!-- Latest stable at time of writing -->
+      <scope>provided</scope>
+    </dependency>
 
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>credentials-binding</artifactId>
-            <version>523.vd859a_4b_122e6</version>
-            <optional>true</optional>
-        </dependency>
+    <!-- Apache Commons Lang -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.12.0</version>
+    </dependency>
 
-        <!-- Jenkins core -->
-        <dependency>
-            <groupId>org.jenkins-ci.main</groupId>
-            <artifactId>jenkins-core</artifactId>
-            <version>${jenkins.version}</version>
-            <scope>provided</scope>
-        </dependency>
+    <!-- Optional: JSON library -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20231013</version>
+    </dependency>
 
-        <!-- BouncyCastle for certificate parsing -->
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk15on</artifactId>
-            <version>1.70</version>
-        </dependency>
+    <!-- Unit testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-        <!-- JUnit for tests -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <!-- Plugin for building Jenkins plugins -->
-            <plugin>
-                <groupId>org.jenkins-ci.tools</groupId>
-                <artifactId>maven-hpi-plugin</artifactId>
-                <version>3.33</version>
-                <extensions>true</extensions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
