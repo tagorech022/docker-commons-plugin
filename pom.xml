@@ -1,42 +1,31 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
-    <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>io.jenkins.plugins</groupId>
-        <artifactId>plugin</artifactId>
-        <version>4.39</version> <!-- ✅ Use a valid version -->
-        <relativePath/> <!-- Forces Maven to use remote POM -->
-    </parent>
+  <parent>
+    <groupId>io.jenkins.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>4.70</version> <!-- ✅ USE VALID VERSION -->
+  </parent>
 
-    <groupId>org.jenkinsci.plugins</groupId>
-    <artifactId>docker-commons-sample</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>hpi</packaging>
+  <artifactId>docker-commons-sample</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>hpi</packaging>
 
-    <name>Docker Commons Sample</name>
-    <url>https://github.com/your-org/docker-commons-sample</url>
+  <name>Docker Commons Sample Plugin</name>
+  <url>https://github.com/tagorech022/docker-commons-plugin</url>
 
-    <properties>
-        <java.level>11</java.level>
-        <jenkins.version>2.361.4</jenkins.version>
-    </properties>
+  <properties>
+    <java.level>8</java.level>
+  </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>docker-commons</artifactId>
-            <version>1.21</version>
-        </dependency>
-    </dependencies>
-
-    <repositories>
-        <repository>
-            <id>jenkins</id>
-            <url>https://repo.jenkins-ci.org/public/</url>
-        </repository>
-    </repositories>
-
+  <dependencies>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>docker-commons</artifactId>
+      <version>1.18</version>
+    </dependency>
+  </dependencies>
 </project>
