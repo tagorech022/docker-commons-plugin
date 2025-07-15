@@ -7,8 +7,8 @@
     <parent>
         <groupId>io.jenkins.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>4.61</version>
-        <relativePath/> <!-- Don't try to resolve from local parent -->
+        <version>4.39</version> <!-- ✅ Use a valid version -->
+        <relativePath/> <!-- Forces Maven to use remote POM -->
     </parent>
 
     <groupId>org.jenkinsci.plugins</groupId>
@@ -16,13 +16,12 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
 
-    <name>Docker Commons Sample Plugin</name>
-    <description>Sample Jenkins plugin demonstrating Docker server and registry endpoint usage.</description>
+    <name>Docker Commons Sample</name>
     <url>https://github.com/your-org/docker-commons-sample</url>
 
     <properties>
         <java.level>11</java.level>
-        <jenkins.version>2.387.1</jenkins.version>
+        <jenkins.version>2.361.4</jenkins.version>
     </properties>
 
     <dependencies>
@@ -30,12 +29,6 @@
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>docker-commons</artifactId>
             <version>1.21</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci</groupId>
-            <artifactId>plugin</artifactId>
-            <version>3.58</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
