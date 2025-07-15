@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: tagore405/jenkins-test-harness
+    container_name: jenkins-test-harness
+    ports:
+      - "8080:8080"
+      - "50000:50000"  # For Jenkins agent connections
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    environment:
+      JAVA_OPTS: -Djenkins.install.runSetupWizard=false
+
+volumes:
+  jenkins_home:
