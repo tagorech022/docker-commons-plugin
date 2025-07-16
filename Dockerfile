@@ -1,20 +1,12 @@
-# Stage 1: Build the Jenkins plugin
-FROM maven:3.9.6-eclipse-temurin-17 as builder
+FROM jenkins/jenkins:lts
 
-WORKDIR /app
+USER root
 
-# Copy plugin source code
-COPY . .
+# Optional: install curl if needed
+RUN apt-get update && apt-get install -y curl
 
-# Clean install the plugin, skipping tests (license plugin already removed from pom.xml)
-RUN mvn clean install -DskipTests
+# Switch back to jenkins user
+USER jenkins
 
-# Stage 2: Optional clean runtime image with only the plugin artifact
-FROM eclipse-temurin:17-jdk as runtime
-
-WORKDIR /app
-
-# Copy only the final HPI plugin from the builder stage
-COPY --from=builder /app/target/*.hpi ./plugin.hpi
-
-CMD ["echo", "Plugin build complete. HPI ready."]
+# Install the unique-id plugin
+RUN jenkins-plugin-cli --plugins unique-id
