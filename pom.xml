@@ -40,14 +40,13 @@
     <developerConnection>scm:git:ssh://git@github.com/jenkinsci/plugin-pom.git</developerConnection>
     <tag>plugin-2.5</tag>
   </scm>
-
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <releaseProfiles> </releaseProfiles>
 	  <profile>
-  <id>skip-license-plugin</id>
+  <id>disable-license-plugin</id>
   <activation>
     <activeByDefault>true</activeByDefault>
   </activation>
@@ -59,10 +58,7 @@
         <executions>
           <execution>
             <id>default</id>
-            <phase>none</phase>
-            <goals>
-              <goal>process</goal>
-            </goals>
+            <phase>none</phase> <!-- prevents it from executing -->
           </execution>
         </executions>
       </plugin>
