@@ -1,18 +1,13 @@
-# Stage 1: Build Jenkins plugin
+# Stage 1: Build plugin
 FROM maven:3.9.5-eclipse-temurin-17 AS builder
 
 WORKDIR /app
-
 COPY . .
 
-# Activate profile that disables problematic plugins
-RUN mvn clean install -DskipTests -Pskip-license-plugin
+# Disable license plugin execution
+RUN mvn clean install -DskipTests -Pdisable-license-plugin
 
-# Stage 2 (optional): Copy only the HPI if needed
+# Stage 2: (Optional)
 FROM eclipse-temurin:17-jdk
-
 WORKDIR /plugin
-
-COPY --from=builder /app/target/*.hpi ./plugin.hpi
-
-CMD ["java", "-jar", "/usr/share/jenkins/jenkins.war"]
+COPY --from=builder /app/target/*.hpi ./
