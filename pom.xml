@@ -51,18 +51,6 @@
     <activeByDefault>true</activeByDefault>
   </activation>
   <build>
-    <plugins>
-      <plugin>
-        <groupId>com.cloudbees</groupId>
-        <artifactId>maven-license-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>default</id>
-            <phase>none</phase> <!-- prevents it from executing -->
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
   </build>
 </profile>
     <arguments> </arguments>
