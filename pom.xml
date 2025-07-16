@@ -46,6 +46,29 @@
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <releaseProfiles> </releaseProfiles>
+	  <profile>
+  <id>skip-license-plugin</id>
+  <activation>
+    <activeByDefault>true</activeByDefault>
+  </activation>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.cloudbees</groupId>
+        <artifactId>maven-license-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>default</id>
+            <phase>none</phase>
+            <goals>
+              <goal>process</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</profile>
     <arguments> </arguments>
     <jenkins.version>1.625.3</jenkins.version>
     <jenkins-test-harness.version>2.6</jenkins-test-harness.version>
